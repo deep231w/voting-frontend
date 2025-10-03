@@ -20,7 +20,7 @@ const Login = () => {
     }
 
     try{
-        const response= await axios.post('http://localhost:5000/users/login',payload);
+        const response= await axios.post(`${import.meta.env.VITE_API_URL}/users/login,payload`);
 
         console.log("response after login- ", response);
 
