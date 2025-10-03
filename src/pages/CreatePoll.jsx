@@ -37,7 +37,7 @@ const CreatePoll = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/poll/createpoll",
+        `${import.meta.env.VITE_API_URL}/poll/createpoll`,
         { question, options },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -46,7 +46,7 @@ const CreatePoll = () => {
       setQuestion("");
       setOptions(["", ""]);
       window.location.href = "/"; 
-      
+
     } catch (e) {
       console.log("error during create poll-", e.response?.data || e.message);
       alert("Failed to create poll");

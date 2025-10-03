@@ -12,7 +12,7 @@ const Home = () => {
   const [votedPolls, setVotedPolls] = useState(new Set()); 
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:5000");
+    const ws = new WebSocket(`${import.meta.env.VITE_WS_URL}`);
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
@@ -35,7 +35,7 @@ const Home = () => {
 
   const fetchPolls = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/poll/getpolls', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/poll/getpolls`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -79,7 +79,7 @@ const Home = () => {
 
     try {
       await axios.post(
-        `http://localhost:5000/vote/votesubmit`,
+        `${import.meta.env.VITE_API_URL}/vote/votesubmit`,
         { optionId: selectedOptionId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
