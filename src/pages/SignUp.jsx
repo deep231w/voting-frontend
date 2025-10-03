@@ -23,7 +23,7 @@ const SignUp = () => {
 
 
     try{
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}/users/signup,payload`)
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/users/signup`,payload)
         console.log("response after signin -", response);
 
         localStorage.setItem("token", response.data.token);
